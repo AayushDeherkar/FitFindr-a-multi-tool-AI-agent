@@ -1,6 +1,9 @@
 # API keys — never commit these
 .env
 
+# Per-user style profile memory (stretch feature) — local state, not committed
+data/style_profile.json
+
 # Python
 __pycache__/
 *.py[cod]

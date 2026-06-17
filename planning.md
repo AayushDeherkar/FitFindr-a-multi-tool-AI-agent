@@ -20,7 +20,7 @@ ranked best-match-first. This is the agent's "find something to buy" step.
 
 **Input parameters:**
 - `description` (str): Free-text keywords describing the desired item, e.g. `"vintage graphic tee"`. Tokenized and matched against each listing's title, description, style_tags, category, brand, and colors.
-- `size` (str | None): Size string to filter by, e.g. `"M"`. Matched case-insensitively as a substring in either direction so `"M"` matches `"S/M"` and `"M/L"`. `None` skips size filtering.
+- `size` (str | None): Size string to filter by, e.g. `"M"`. Matched case-insensitively as a substring so `"M"` matches `"S/M"` and `"M/L"`. `None` skips size filtering.
 - `max_price` (float | None): Inclusive price ceiling. A listing with `price <= max_price` passes. `None` skips price filtering.
 
 **What it returns:**
@@ -270,7 +270,7 @@ running.
 - **search_listings:** Give Claude the Tool 1 block (inputs, return value, scoring steps,
   empty-result behavior) + the listings field list, and ask it to implement the function
   using `load_listings()`. **Verify before trusting:** confirm it (a) filters by all three
-  params, (b) case-insensitive bidirectional size match, (c) drops score-0 items, (d) returns
+  params, (b) case-insensitive substring size match, (c) drops score-0 items, (d) returns
   `[]` not an exception when empty. Test with `vintage graphic tee` (expect hits), `jacket
   max_price=10` (expect all ≤ $10), and `designer ballgown XXS $5` (expect `[]`).
 - **suggest_outfit / create_fit_card:** Give Claude the Tool 2/3 blocks including the empty-
