@@ -135,6 +135,8 @@ For each tool, describe the specific failure mode you're handling and what the a
 
 ## A Complete Interaction (Step by Step)
 
+**What FitFindr does (in my own words):** FitFindr takes a single natural-language thrifting request and turns it into a finished, shareable outfit. It first *searches* a mock secondhand listings dataset for items matching the user's keywords, size, and budget (triggering `search_listings`); if it finds something it picks the best match and *styles* it against the user's existing wardrobe (triggering `suggest_outfit`), then *writes* a casual caption for the look (triggering `create_fit_card`). If any step produces nothing useful — most importantly, if the search returns zero listings — the agent stops early, tells the user exactly what failed and what to change, and never feeds empty data into the next tool.
+
 Write out what a full user interaction looks like from start to finish — tool call by tool call. Use a specific example query.
 
 **Example user query:** "I'm looking for a vintage graphic tee under $30. I mostly wear baggy jeans and chunky sneakers. What's out there and how would I style it?"
